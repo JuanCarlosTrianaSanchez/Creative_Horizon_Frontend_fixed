@@ -1,0 +1,69 @@
+<app-header></app-header>
+<main>
+  <section id="login">
+    <div class="container py-5">
+      <div class="row">
+        <div
+          class="col-12 col-sm-10 col-md-8 col-lg-6 offset-sm-1 offset-md-2 offset-lg-3"
+        >
+          <div class="section-text-combo">
+            <h2>Inicio de Sesión</h2>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti
+              accusantium voluptas voluptatibus perferendis velit nostrum qui
+              repellendus laboriosam.
+            </p>
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+              />
+              <div
+                *ngIf="
+                  loginForm.get('email')?.invalid &&
+                  loginForm.get('email')?.touched
+                "
+              >
+                <small class="error"
+                  >Por favor, ingresa un correo electrónico válido.</small
+                >
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+              />
+              <div
+                *ngIf="
+                  loginForm.get('password')?.invalid &&
+                  loginForm.get('password')?.touched
+                "
+              >
+                <small class="error"
+                  >La contraseña debe tener al menos 6 caracteres.</small
+                >
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="loginForm.invalid"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>

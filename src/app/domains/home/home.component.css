@@ -1,0 +1,192 @@
+main {
+  background-color: #9c7c45d5;
+  min-height: 80vh;
+  margin-top: 100px;
+}
+
+.section-text-combo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section-text-combo p {
+  width: 70%;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+
+#hero {
+  max-width: 100%;
+  padding-top: 150px;
+  position: relative;
+}
+
+.row {
+  max-width: 100%;
+}
+
+.col-8 {
+  width: 800px;
+  height: 400px;
+  background-image: url("../../../assets/images/FondoArte-1.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.col-4 {
+  width: 480px;
+  font-family: "Playfair Display", serif;
+  color: #251c05bb;
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(196, 178, 15, 0.7);
+  padding: 20px;
+}
+
+.section-text-combo {
+  font-family: "Playfair Display", serif;
+  color: #2b220bbb;
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(196, 178, 15, 0.7);
+}
+
+.info {
+  background-color: #968239d1;
+  text-align: center;
+  color: #3d2d05bb;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .page-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+
+  figcaption {
+    margin-top: 1rem;
+  }
+
+  figcaption h4 {
+    margin: 0.5rem 0;
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+  }
+
+  figcaption p {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  #featured .product {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  #featured .product img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  #featured .product figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #featured .product figcaption {
+    margin-top: 1rem;
+  }
+
+  #featured .product figcaption .featured {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  #featured .product figcaption h3 {
+    margin: 0.5rem 0;
+  }
+
+  #featured .product figcaption p {
+    margin: 0;
+  }
+
+  .product {
+    position: relative;
+  }
+
+  .product figure img {
+    width: 100%;
+    aspect-ratio: 1 / 1.1;
+    object-fit: cover;
+  }
+
+  .product figure figcaption {
+    margin-top: 0.5rem;
+  }
+
+  .product figure figcaption .featured {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: white;
+    background: rgba(26, 25, 1, 0.694);
+    font-weight: 600;
+    padding: 0.2rem 0.4rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .product figure figcaption h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  #newsletter h2 {
+    font-family: "Playfair Display", serif;
+    color: #251c05bb;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(196, 178, 15, 0.7);
+  }
+
+  #newsletter p {
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+  }
+
+  #newsletter small {
+    color: red;
+  }
+
+  @media screen and (max-width: 992px) {
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-text-combo p {
+      width: 80%;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    html {
+      font-size: 18px;
+    }
+
+    .section-text-combo p {
+      width: 100%;
+    }
+  }
+}

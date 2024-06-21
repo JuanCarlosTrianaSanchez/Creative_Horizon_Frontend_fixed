@@ -1,0 +1,63 @@
+<header class="header-container">
+  <nav
+    class="navbar navbar-light navbar-expand-md justify-content-center fixed-top"
+  >
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex w-50 mr-auto" href="#">
+        <strong>Creative Horizon</strong>
+      </a>
+      <div class="search-bar">
+        <input class="search-input" type="text" placeholder="Buscar..." />
+        <button class="search-btn">Buscar</button>
+      </div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavBar"
+        aria-controls="mainNavBar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse w-100" id="mainNavBar">
+        <ul class="navbar-nav w-100 justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/']">Inicio</a>
+          </li>
+          <!--   <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" routerLink="/products/categories/pinceles">Pinceles</a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/products/categories/pinturas">Pinturas</a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/products/categories/lienzos">Lienzos</a>
+              </li>
+            </ul>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/products']">Productos</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/register']">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/login']">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">???<i class="bi bi-bag"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

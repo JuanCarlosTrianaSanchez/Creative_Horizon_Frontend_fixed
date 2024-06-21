@@ -1,0 +1,107 @@
+/* .container {
+  margin-top: 40px;
+  background-color: #583c04c3 !important;
+  font-family: "Playfair Display", serif;
+  color: #d4af37;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.product {
+  position: relative;
+}
+
+.product figure img {
+  width: 100%;
+  aspect-ratio: 1 / 1.1;
+  object-fit: cover;
+}
+.product figure figcaption {
+  margin-top: 0.5rem;
+}
+
+.product figure figcaption .featured {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: rgb(14, 13, 13);
+  background: rgb(14, 14, 15);
+  font-weight: 600;
+  padding: 0.2rem 0.4rem;
+  letter-spacing: 0.1rem;
+}
+
+.product figure figcaption h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+#newsletter p {
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+#newsletter small {
+  color: red;
+}
+ */
+main {
+  background-image: url(../../../assets/images/DALL·E\ 2024-06-05\ 22.38.29\ -\ A\ sepia-toned\ background\ image\ for\ a\ luxurious\ painting\ materials\ website\,\ featuring\ an\ artist\ creating\ a\ masterpiece.\ The\ scene\ is\ illuminated\ with\ w.webp);
+  margin-bottom: 0;
+}
+.container {
+  margin-top: 40px;
+  background-color: #583c04c3 !important;
+  font-family: "Playfair Display", serif;
+  color: #d4af37;
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.product {
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px 0;
+  text-align: center;
+  background-color: #0f0e07;
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product h3 {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.product p {
+  font-size: 1em;
+  color: #ebe8e8;
+}
+.product a {
+  text-decoration: none; /* Elimina el subrayado */
+  color: rgba(205, 189, 12, 0.872); /* Usa el color del texto padre */
+}
+
+.product a:hover {
+  text-decoration: underline; /* Añade subrayado al pasar el ratón */
+  color: #d4af37; /* Cambia el color al pasar el ratón */
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  padding: 20px;
+}
