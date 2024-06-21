@@ -47,10 +47,35 @@
   color: red;
 }
  */
+/* main {
+  background-image: url(../../../assets/images/A-sepia-toned-background2.webp);
+  margin-bottom: 0;
+} */
 main {
-  background-image: url(../../../assets/images/DALL·E\ 2024-06-05\ 22.38.29\ -\ A\ sepia-toned\ background\ image\ for\ a\ luxurious\ painting\ materials\ website\,\ featuring\ an\ artist\ creating\ a\ masterpiece.\ The\ scene\ is\ illuminated\ with\ w.webp);
+  background-image: url(../../../assets/images//A-sepia-toned-background2.webp);
+  background-repeat: no-repeat;
+  background-size: cover; /* Mantiene la proporción de la imagen mientras cubre el área */
+  background-position: center; /* Centra la imagen en el contenedor */
+  position: relative; /* Necesario para el overlay */
+  color: #d4af37;
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   margin-bottom: 0;
 }
+
+main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Overlay oscuro para mejorar el contraste */
+  z-index: -1; /* Coloca el overlay detrás del contenido */
+}
+
 .container {
   margin-top: 40px;
   background-color: #583c04c3 !important;
