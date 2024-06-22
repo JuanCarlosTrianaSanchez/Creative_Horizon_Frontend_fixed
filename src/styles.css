@@ -1,4 +1,4 @@
-html,
+/* html,
 body {
   height: 100%;
   margin: 0;
@@ -21,4 +21,45 @@ main {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+ */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  margin-top: 60px; /* Ajusta este valor si es necesario */
+  margin-bottom: 0; /* Elimina el margen inferior para evitar espacio en blanco */
+  padding: 20px; /* Añade un padding interno para mejor visualización */
+}
+
+footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 20px; /* Añade padding para asegurar espacio interno en el footer */
+}
+
+/* Ajusta el tamaño del texto y otros elementos para mejor visualización */
+body {
+  font-size: 16px; /* Asegura que el texto sea legible */
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: 40px; /* Aumenta el padding en pantallas más grandes */
+  }
+
+  footer {
+    padding: 40px; /* Aumenta el padding en pantallas más grandes */
+  }
 }

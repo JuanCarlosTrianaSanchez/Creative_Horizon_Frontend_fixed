@@ -1,6 +1,15 @@
 main {
   margin-top: 120px;
-  margin-bottom: 50px;
+  margin-bottom: 5px;
+
+  background-image: url(../../../assets/images/Fondo-repeat.webp);
+  font-family: "Playfair Display", serif;
+  color: #d4af37;
+  text-shadow: 1px 1px 2px rgba(233, 233, 233, 0.7);
+  font-size: 1.5rem;
+}
+.row {
+  width: 100%;
 }
 
 form small.error {
@@ -8,10 +17,9 @@ form small.error {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #070707;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

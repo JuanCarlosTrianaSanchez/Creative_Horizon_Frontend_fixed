@@ -1,62 +1,6 @@
-/* .container {
-  margin-top: 40px;
-  background-color: #583c04c3 !important;
-  font-family: "Playfair Display", serif;
-  color: #d4af37;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-}
-
-.product {
-  position: relative;
-}
-
-.product figure img {
-  width: 100%;
-  aspect-ratio: 1 / 1.1;
-  object-fit: cover;
-}
-.product figure figcaption {
-  margin-top: 0.5rem;
-}
-
-.product figure figcaption .featured {
-  position: absolute;
-  top: 0;
-  right: 0;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  color: rgb(14, 13, 13);
-  background: rgb(14, 14, 15);
-  font-weight: 600;
-  padding: 0.2rem 0.4rem;
-  letter-spacing: 0.1rem;
-}
-
-.product figure figcaption h3 {
-  margin: 0;
-  font-size: 1rem;
-}
-
-#newsletter p {
-  font-size: 0.9rem;
-  line-height: 1.2rem;
-}
-#newsletter small {
-  color: red;
-}
- */
-/* main {
-  background-image: url(../../../assets/images/A-sepia-toned-background2.webp);
-  margin-bottom: 0;
-} */
 main {
-  background-image: url(../../../assets/images//A-sepia-toned-background2.webp);
-  background-repeat: no-repeat;
-  background-size: cover; /* Mantiene la proporción de la imagen mientras cubre el área */
-  background-position: center; /* Centra la imagen en el contenedor */
-  position: relative; /* Necesario para el overlay */
+  background-image: url(../../../assets/images/Fondo-repeat.webp);
+
   color: #d4af37;
   font-family: "Playfair Display", serif;
   font-size: 1.5rem;
@@ -72,8 +16,8 @@ main::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Overlay oscuro para mejorar el contraste */
-  z-index: -1; /* Coloca el overlay detrás del contenido */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
 }
 
 .container {
@@ -88,8 +32,9 @@ main::before {
 
 .product {
   width: 300px;
+  height: 300px;
   border: 1px solid #ccc;
-  padding: 15px;
+  padding: 10px;
   margin: 10px 0;
   text-align: center;
   background-color: #0f0e07;
@@ -101,22 +46,24 @@ main::before {
 }
 
 .product h3 {
-  font-size: 1.2em;
-  margin: 10px 0;
+  font-size: 1em;
+  margin: 3px 0;
 }
 
 .product p {
   font-size: 1em;
   color: #ebe8e8;
+  margin: 0;
+  padding: 0;
 }
 .product a {
-  text-decoration: none; /* Elimina el subrayado */
-  color: rgba(205, 189, 12, 0.872); /* Usa el color del texto padre */
+  text-decoration: none;
+  color: rgba(205, 189, 12, 0.872);
 }
 
 .product a:hover {
-  text-decoration: underline; /* Añade subrayado al pasar el ratón */
-  color: #d4af37; /* Cambia el color al pasar el ratón */
+  text-decoration: underline;
+  color: #d4af37;
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -125,8 +72,4 @@ main::before {
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.card-body {
-  padding: 20px;
 }
