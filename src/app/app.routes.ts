@@ -6,13 +6,11 @@ import { ProductDetailComponent } from './domains/product-detail/product-detail.
 import { RegisterComponent } from './domains/register/register.component';
 import { LoginComponent } from './domains/login/login.component';
 
-
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutUsComponent },
   { path: 'products', component: ProductsComponent },
-  // { path: 'products/categories/:category', component: ProductsComponent },
   { path: 'products/:id', component: ProductDetailComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent },
 ];

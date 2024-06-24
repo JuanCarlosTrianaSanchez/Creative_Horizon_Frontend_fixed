@@ -1,5 +1,6 @@
-export interface Product {
-    _id: string;  
+
+  export interface Product {
+    _id: string;
     name: string;
     brand: string;
     price: number;
@@ -8,11 +9,13 @@ export interface Product {
     size: string;
     colour: string;
     material: string;
-    category: Category;
-  }
-  
-  export interface Category {
-    _id: string;  
-    type: string;
+    category: {
+      _id: string;
+      type: string;
+      __v: number;
+    };
+    __v: number;
+    description?: string; 
+    featured?: boolean; 
   }
   

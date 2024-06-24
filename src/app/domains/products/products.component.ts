@@ -35,22 +35,4 @@ export class ProductsComponent implements OnInit {
   }
 }
 
-/*   products = signal([]);
-  filteredProducts = signal([]);
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.productService.getProducts().subscribe({
-      next: (data: any) => {
-        console.log(data)
-        this.products.set(data);
-        this.filteredProducts.set(data);
-      },
-      error: error => {
-        console.log(error)
-      }
-    });
-  }
-
-} */

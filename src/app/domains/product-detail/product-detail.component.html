@@ -1,63 +1,68 @@
 <app-header></app-header>
 <main>
-  <section id="product-detail" class="pt-5">
+  <section id="product-detail" class="pt-5 product-detail">
     <div class="container">
       <div class="row">
-        <div class="col-12 col-sm-6">
-          <img
-            class="product-detail__image"
-            src="https://htmldemo.net/flone/flone/assets/img/product/hm3-pro-2.jpg"
-            alt=""
-          />
+        <div class="col-12 col-sm-6 position-relative">
+          <div class="product-detail__image-container">
+            <img
+              class="product-detail__image"
+              [src]="
+                product?.imageUrl ||
+                'https://htmldemo.net/flone/flone/assets/img/product/hm3-pro-2.jpg'
+              "
+              [alt]="product?.name || 'Product Image'"
+            />
+          </div>
         </div>
-        <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-          <h1>Product {{ productId }}</h1>
 
-          <p>$ 60.00</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut magni
-            nostrum iusto animi, velit tenetur!
-          </p>
-          <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+        <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+          <h1 class="product-detail__title">{{ product?.name }}</h1>
+
+          <p>{{ product?.description }}</p>
+
+          <ul class="product-detail__features">
+            <li><strong>Marca:</strong> {{ product?.brand }}</li>
+            <li><strong>Color:</strong> {{ product?.colour }}</li>
+            <li><strong>Tamaño:</strong> {{ product?.size }}</li>
+            <li><strong>Material:</strong> {{ product?.material }}</li>
+            <li><strong>Categoria:</strong> {{ product?.category?.type }}</li>
+            <li><strong>Unidades disponibles:</strong> {{ product?.stock }}</li>
           </ul>
+          <p class="product-detail__price">
+            {{ product?.price | currency : "USD" : "symbol" : "1.0-0" }}
+          </p>
+          <button class="btn btn-primary">Add to Cart</button>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section id="newsletter" class="my-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Ad lorem ipsum</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta
-            reprehenderit atque inventore obcaecati!
-          </p>
+      <div class="row mt-4">
+        <div class="col-6 text-left">
+          <button
+            class="btn btn-secondary"
+            (click)="goToPrevious()"
+            [disabled]="currentIndex <= 0"
+          >
+            Anterior
+          </button>
         </div>
-        <div class="col-md-6">
-          <div class="input-group mb-1">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Recipient's username"
-              aria-label="Recipient's username"
-              aria-describedby="button-addon2"
-            />
-            <button
-              class="btn btn-outline-secondary"
-              type="button"
-              id="button-addon2"
-            >
-              Button
-            </button>
-          </div>
-          <small>Lorem ipsum dolor sit amet.</small>
+        <div class="col-6 text-right">
+          <button
+            class="btn btn-secondary"
+            (click)="goToNext()"
+            [disabled]="currentIndex >= products.length - 1"
+          >
+            Siguiente
+          </button>
         </div>
+      </div>
+
+      <div class="product-detail__logo-container">
+        <img
+          src="../../../assets/images/Logo2.webp"
+          alt="Creative Horizon Logo"
+          class="product-detail__logo"
+        />
       </div>
     </div>
   </section>
