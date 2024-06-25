@@ -1,16 +1,13 @@
 <app-header></app-header>
 <main>
   <section id="hero" class="d-flex align-items-center">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-8"></div>
         <div
           class="col-4 d-flex flex-column justify-content-center align-items-start"
         >
-          <h1>
-            Bienvenidos <br />Creative Horizon <br />donde el arte y el lujo se
-            unen
-          </h1>
+          <h1>Creative Horizon <br />donde el arte y el lujo se unen</h1>
           <p>
             Explora un santuario de creatividad con nuestra exclusiva colección
             de materiales y herramientas de arte de primera calidad. En Creative
@@ -27,23 +24,57 @@
 
   <section id="initial-products" class="py-5">
     <div class="container-fluid">
-      <div><h1>Nuestros Productos</h1></div>
-      <div class="row">
+      <div class="row d-flex align-items-stretch">
         <div
-          class="col-12 col-md-6 col-lg-4"
-          *ngFor="let product of initialProducts()"
+          id="featured"
+          class="col-12 col-lg-3 text-center mb-4 d-flex flex-column"
         >
-          <div class="product">
-            <a [routerLink]="['/products', product._id]">
-              <figure>
-                <img [src]="product.imageUrl" alt="{{ product.name }}" />
-                <figcaption>
-                  <span class="featured">{{ product.category.type }}</span>
-                  <h3>{{ product.name }}</h3>
-                  <p>{{ product.price | currency }}</p>
-                </figcaption>
-              </figure>
-            </a>
+          <h2>Productos Destacados</h2>
+          <div class="featured-products flex-grow-1">
+            <div class="product" *ngFor="let product of featuredProducts()">
+              <a [routerLink]="['/products', product._id]">
+                <figure>
+                  <img [src]="product.imageUrl" alt="{{ product.name }}" />
+                  <figcaption>
+                    <span class="featured">{{ product.category.type }}</span>
+                    <h3>{{ product.name }}</h3>
+                    <p class="product-price">
+                      {{ product.price | currency : "" : "symbol" : "1.0-0" }}
+                    </p>
+                  </figcaption>
+                </figure>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div id="our-products" class="col-12 col-lg-9 d-flex flex-column">
+          <h1 class="text-center mb-4">Nuestros Productos</h1>
+          <div class="row flex-grow-1">
+            <div
+              class="col-12 col-md-6 col-lg-4"
+              *ngFor="let product of initialProducts().slice(0, 9)"
+            >
+              <div class="product">
+                <a [routerLink]="['/products', product._id]">
+                  <figure>
+                    <img [src]="product.imageUrl" alt="{{ product.name }}" />
+                    <figcaption>
+                      <span class="featured">{{ product.category.type }}</span>
+                      <h3>{{ product.name }}</h3>
+                      <p class="product-price">
+                        {{ product.price | currency : "" : "symbol" : "1.0-0" }}
+                      </p>
+                    </figcaption>
+                  </figure>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <a class="btn btn-primary" [routerLink]="'/products'"
+              >Ver Todos los Productos</a
+            >
           </div>
         </div>
       </div>
@@ -109,37 +140,6 @@
               </p>
             </figcaption>
           </figure>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="featured" class="py-5">
-    <div class="container text-center">
-      <div class="section-text-combo">
-        <h2>Productos Destacados</h2>
-        <p>
-          Aquí puedes ver los productos preferidos por nuestros usuarios este
-          mes.
-        </p>
-      </div>
-      <div class="row justify-content-center">
-        <div
-          class="col-12 col-sm-6 col-lg-4"
-          *ngFor="let product of featuredProducts()"
-        >
-          <div class="product">
-            <a [routerLink]="['/products', product._id]">
-              <figure>
-                <img [src]="product.imageUrl" alt="{{ product.name }}" />
-                <figcaption>
-                  <span class="featured">{{ product.category.type }}</span>
-                  <h3>{{ product.name }}</h3>
-                  <p>{{ product.price | currency }}</p>
-                </figcaption>
-              </figure>
-            </a>
-          </div>
         </div>
       </div>
     </div>
