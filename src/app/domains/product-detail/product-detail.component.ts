@@ -11,7 +11,7 @@ import { Product } from '../../models/product.model';
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent, RouterModule], // Añadir RouterModule aquí
+  imports: [CommonModule, HeaderComponent, FooterComponent, RouterModule], 
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
@@ -33,7 +33,7 @@ export class ProductDetailComponent implements OnInit {
   loadProducts() {
     this.productService.getProducts().subscribe((products: Product[]) => {
       this.products = products;
-      console.log(this.products); // Verificar que los productos se carguen correctamente
+      console.log(this.products); 
       this.setCurrentProduct();
     });
   }

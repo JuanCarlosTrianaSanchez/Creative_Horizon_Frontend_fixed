@@ -16,17 +16,36 @@ export class RegisterComponent {
 
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
-      username: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      lastname: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+      barrio: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      pais: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]], 
       email: ['', [Validators.required, Validators.email]],
+      confirmEmail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required]]
-    });
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
+    }, { validator: this.matchingEmails('email', 'confirmEmail') });
+  }
+
+  matchingEmails(emailKey: string, confirmEmailKey: string) {
+    return (group: FormGroup): { [key: string]: any } | null => {
+      let email = group.controls[emailKey];
+      let confirmEmail = group.controls[confirmEmailKey];
+      if (email.value !== confirmEmail.value) {
+        return {
+          mismatchedEmails: true
+        };
+      }
+      return null;
+    };
   }
 
   onSubmit(): void {
     if (this.registerForm.valid) {
       console.log(this.registerForm.value);
-     
     }
   }
 }

@@ -3,90 +3,225 @@
   <section id="register">
     <div class="container py-5">
       <div class="row">
-        <div
-          class="col-12 col-sm-10 col-md-8 col-lg-6 offset-sm-1 offset-md-2 offset-lg-3"
-        >
-          <div class="section-text-combo">
-            <h2>Registro de Usuario</h2>
+        <div class="col-12">
+          <div class="section-text-combo text-center">
+            <h2>Únete ahora!</h2>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti
-              accusantium voluptas voluptatibus perferendis velit nostrum qui
-              repellendus laboriosam.
+              Regístrate en nuestra página y disfruta de los productos que
+              tenemos para ti.
             </p>
           </div>
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <div class="mb-3">
-              <label for="username" class="form-label">Nombre de Usuario</label>
-              <input
-                type="text"
-                class="form-control"
-                id="username"
-                formControlName="username"
-              />
-              <div
-                *ngIf="
-                  registerForm.get('username')?.invalid &&
-                  registerForm.get('username')?.touched
-                "
-              >
-                <small class="error">El nombre de usuario es requerido.</small>
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Correo Electrónico</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                formControlName="email"
-              />
-              <div
-                *ngIf="
-                  registerForm.get('email')?.invalid &&
-                  registerForm.get('email')?.touched
-                "
-              >
-                <small class="error"
-                  >Por favor, ingresa un correo electrónico válido.</small
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  formControlName="name"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('name')?.invalid &&
+                    registerForm.get('name')?.touched
+                  "
                 >
+                  <small class="error">El nombre es requerido.</small>
+                </div>
               </div>
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Contraseña</label>
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                formControlName="password"
-              />
-              <div
-                *ngIf="
-                  registerForm.get('password')?.invalid &&
-                  registerForm.get('password')?.touched
-                "
-              >
-                <small class="error"
-                  >La contraseña debe tener al menos 6 caracteres.</small
+              <div class="col-md-6 mb-3">
+                <label for="lastname" class="form-label">Apellido</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastname"
+                  formControlName="lastname"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('lastname')?.invalid &&
+                    registerForm.get('lastname')?.touched
+                  "
                 >
+                  <small class="error">El apellido es requerido.</small>
+                </div>
               </div>
             </div>
-            <div class="mb-3">
-              <label for="confirmPassword" class="form-label"
-                >Confirmar Contraseña</label
-              >
-              <input
-                type="password"
-                class="form-control"
-                id="confirmPassword"
-                formControlName="confirmPassword"
-              />
-              <div
-                *ngIf="
-                  registerForm.get('confirmPassword')?.invalid &&
-                  registerForm.get('confirmPassword')?.touched
-                "
-              >
-                <small class="error">Por favor, confirma tu contraseña.</small>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="direccion"
+                  formControlName="direccion"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('direccion')?.invalid &&
+                    registerForm.get('direccion')?.touched
+                  "
+                >
+                  <small class="error">La dirección es requerida.</small>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="barrio" class="form-label">Barrio</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="barrio"
+                  formControlName="barrio"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('barrio')?.invalid &&
+                    registerForm.get('barrio')?.touched
+                  "
+                >
+                  <small class="error">El barrio es requerido.</small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="city" class="form-label">Ciudad</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  formControlName="city"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('city')?.invalid &&
+                    registerForm.get('city')?.touched
+                  "
+                >
+                  <small class="error">La ciudad es requerida.</small>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="pais" class="form-label">País</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="pais"
+                  formControlName="pais"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('pais')?.invalid &&
+                    registerForm.get('pais')?.touched
+                  "
+                >
+                  <small class="error">El país es requerido.</small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="phone" class="form-label">Teléfono</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phone"
+                  formControlName="phone"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('phone')?.invalid &&
+                    registerForm.get('phone')?.touched
+                  "
+                >
+                  <small class="error">El teléfono es requerido.</small>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  formControlName="email"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('email')?.invalid &&
+                    registerForm.get('email')?.touched
+                  "
+                >
+                  <small class="error"
+                    >Por favor, ingresa un correo electrónico válido.</small
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="confirmEmail" class="form-label"
+                  >Confirmar Correo Electrónico</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="confirmEmail"
+                  formControlName="confirmEmail"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('confirmEmail')?.invalid &&
+                    registerForm.get('confirmEmail')?.touched
+                  "
+                >
+                  <small class="error"
+                    >Por favor, confirma tu correo electrónico.</small
+                  >
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  formControlName="password"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('password')?.invalid &&
+                    registerForm.get('password')?.touched
+                  "
+                >
+                  <small class="error"
+                    >La contraseña debe tener al menos 6 caracteres.</small
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="confirmPassword" class="form-label"
+                  >Confirmar Contraseña</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirmPassword"
+                  formControlName="confirmPassword"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('confirmPassword')?.invalid &&
+                    registerForm.get('confirmPassword')?.touched
+                  "
+                >
+                  <small class="error"
+                    >Por favor, confirma tu contraseña.</small
+                  >
+                </div>
               </div>
             </div>
             <button

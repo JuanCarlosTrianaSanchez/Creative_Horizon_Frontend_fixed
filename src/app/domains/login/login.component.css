@@ -1,17 +1,67 @@
 main {
+  margin-top: 120px;
+  margin-bottom: 5px;
   background-image: url(../../../assets/images/Fondo-repeat.webp);
-
-  color: #f0eee7;
   font-family: "Playfair Display", serif;
+  color: #d4af37;
   font-size: 1.5rem;
+  padding: 20px;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-left: 40px;
+  background-color: #070707;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid #fff;
+}
+#login {
+  padding: 50px 0;
+}
+
+.section-text-combo {
+  margin-bottom: 30px;
+}
+
+.section-text-combo h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.section-text-combo p {
+  font-size: 1.2rem;
+}
+
+.form-control {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-bottom: 2px solid #8c7851;
+  border-radius: 0;
+  color: #3e3e3e;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  outline: none;
+  border-bottom-color: #5e4931;
+}
+
+.btn-primary {
+  background-color: #8c7851;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
   font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-  margin-bottom: 0;
+  padding: 12px 30px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
 }
 
-form {
-}
-
-form small.error {
-  color: red;
+.btn-primary:hover {
+  background-color: #5e4931;
 }
