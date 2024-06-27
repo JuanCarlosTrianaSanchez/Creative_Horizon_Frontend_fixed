@@ -86,17 +86,17 @@
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="city" class="form-label">Ciudad</label>
+                <label for="ciudad" class="form-label">Ciudad</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="city"
-                  formControlName="city"
+                  id="ciudad"
+                  formControlName="ciudad"
                 />
                 <div
                   *ngIf="
-                    registerForm.get('city')?.invalid &&
-                    registerForm.get('city')?.touched
+                    registerForm.get('ciudad')?.invalid &&
+                    registerForm.get('ciudad')?.touched
                   "
                 >
                   <small class="error">La ciudad es requerida.</small>

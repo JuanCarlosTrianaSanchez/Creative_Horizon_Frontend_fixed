@@ -1,6 +1,8 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,21 +12,17 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Output() categorySelected = new EventEmitter<string>();
+  constructor(private authService: AuthService) {}
 
-  navbarOpen = false;
-  dropdownOpen = false;
-
-  toggleNavbar() {
-    this.navbarOpen = !this.navbarOpen;
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
   }
 
-  toggleDropdown(event: Event) {
-    event.preventDefault();
-    this.dropdownOpen = !this.dropdownOpen;
+  get currentUser() {
+    return this.authService.getCurrentUser();
   }
 
-  filterProducts(category: string) {
-    this.categorySelected.emit(category);
+  logout() {
+    this.authService.logout();
   }
 }
