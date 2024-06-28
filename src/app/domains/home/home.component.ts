@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
@@ -14,16 +14,16 @@ import { Product } from '../../models/product.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  private productService = inject(ProductService);
+
   initialProducts = signal<Product[]>([]);
   featuredProducts = signal<Product[]>([]);
-
-  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((products: Product[]) => {
       this.initialProducts.set(products.slice(0, 12));
       const featured = products.filter(product => product.featured);
-      console.log('Featured Products:', featured); // Añadir para depuración
+      console.log('Featured Products:', featured); 
       this.featuredProducts.set(featured.slice(0, 3));
     });
   }

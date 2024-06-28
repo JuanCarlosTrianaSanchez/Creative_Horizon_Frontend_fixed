@@ -1,9 +1,1 @@
-<div *ngIf="isLoggedIn; else loggedOut">
-  <p>Welcome, {{ currentUser?.name }}!</p>
-  <button (click)="logout()">Logout</button>
-</div>
-<ng-template #loggedOut>
-  <a routerLink="/login">Login</a>
-  <a routerLink="/register">Register</a>
-</ng-template>
 <router-outlet></router-outlet>

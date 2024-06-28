@@ -3,7 +3,7 @@
     class="navbar navbar-light navbar-expand-md justify-content-center fixed-top"
   >
     <div class="container-fluid">
-      <a class="navbar-brand d-flex w-50 mr-auto" href="#">
+      <a class="navbar-brand d-flex w-50 mr-auto" [routerLink]="['/']">
         <strong>Creative Horizon</strong>
       </a>
       <div class="search-bar">
@@ -26,35 +26,25 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/']">Inicio</a>
           </li>
-          <!--   <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Categories
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" routerLink="/products/categories/pinceles">Pinceles</a>
-              </li>
-              <li>
-                <a class="dropdown-item" routerLink="/products/categories/pinturas">Pinturas</a>
-              </li>
-              <li>
-                <a class="dropdown-item" routerLink="/products/categories/lienzos">Lienzos</a>
-              </li>
-            </ul>
-          </li> -->
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/products']">Productos</a>
           </li>
         </ul>
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-          <li class="nav-item">
+          <li *ngIf="!isLoggedIn" class="nav-item">
             <a class="nav-link" [routerLink]="['/register']">Registro</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="!isLoggedIn" class="nav-item">
             <a class="nav-link" [routerLink]="['/login']">Login</a>
           </li>
+          <li *ngIf="isLoggedIn" class="nav-item">
+            <span class="nav-link">Bienvenido, {{ currentUser?.name }}!</span>
+          </li>
+          <li *ngIf="isLoggedIn" class="nav-item">
+            <a class="nav-link" href="#" (click)="logout()">Cerrar Sesión</a>
+          </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">???<i class="bi bi-bag"></i></a>
+            <a class="nav-link" href="#"><i class="bi bi-bag"></i></a>
           </li>
         </ul>
       </div>

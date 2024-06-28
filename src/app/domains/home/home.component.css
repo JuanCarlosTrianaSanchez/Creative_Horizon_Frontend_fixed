@@ -138,7 +138,6 @@ main {
   transition: color 0.3s;
 }
 
-/* Efectos hover */
 #initial-products .product:hover figcaption h3 {
   color: #ff6347;
 }

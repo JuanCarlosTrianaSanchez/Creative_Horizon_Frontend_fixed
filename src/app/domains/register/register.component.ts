@@ -1,11 +1,11 @@
 
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { Router } from '@angular/router'; // Importa Router
-import { AuthService } from '../../services/auth.service'; // Importa AuthService
 
 @Component({
   selector: 'app-register',
@@ -16,34 +16,33 @@ import { AuthService } from '../../services/auth.service'; // Importa AuthServic
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { // Agrega AuthService y Router al constructor
+  constructor() {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required]],
       lastname: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
       barrio: ['', [Validators.required]],
-      ciudad: ['', [Validators.required]], // Cambié de 'city' a 'ciudad' para alinear con el backend
+      ciudad: ['', [Validators.required]], 
       pais: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       email: ['', [Validators.required, Validators.email]],
       confirmEmail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
-    }, { validator: this.matchingEmails('email', 'confirmEmail') });
+    }, { validators: this.matchingEmails });
   }
 
-  matchingEmails(emailKey: string, confirmEmailKey: string) {
-    return (group: FormGroup): { [key: string]: any } | null => {
-      let email = group.controls[emailKey];
-      let confirmEmail = group.controls[confirmEmailKey];
-      if (email.value !== confirmEmail.value) {
-        return {
-          mismatchedEmails: true
-        };
-      }
-      return null;
-    };
+  matchingEmails(control: AbstractControl): ValidationErrors | null {
+    const email = control.get('email');
+    const confirmEmail = control.get('confirmEmail');
+    if (email && confirmEmail && email.value !== confirmEmail.value) {
+      return { mismatchedEmails: true };
+    }
+    return null;
   }
 
   onSubmit(): void {
@@ -51,7 +50,7 @@ export class RegisterComponent {
       this.authService.register(this.registerForm.value).subscribe(
         response => {
           console.log('Registro exitoso', response);
-          this.router.navigate(['/login']); // Redirige al usuario a la página de inicio de sesión
+          this.router.navigate(['/login']); 
         },
         error => {
           console.error('Error en el registro', error);
@@ -60,4 +59,3 @@ export class RegisterComponent {
     }
   }
 }
-
