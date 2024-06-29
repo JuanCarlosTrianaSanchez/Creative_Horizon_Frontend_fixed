@@ -10,6 +10,10 @@ export class AuthService {
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:3000/api';
 
+  setToken(token: string) {
+    localStorage.setItem("user_token", token);
+  }
+
   register(data: { 
     name: string, 
     lastname: string, 
@@ -29,21 +33,21 @@ export class AuthService {
     password: string 
   }): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/auth/login`, credentials).pipe(tap(response => {
-          localStorage.setItem('token', response.token);
+          this.setToken(response.token);
         })
       );
   }
 
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('user_token');
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('user_token');
   }
 
   getCurrentUser() {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('user_token');
     if (!token) return null;
 
     try {
@@ -60,5 +64,3 @@ export class AuthService {
     }
   }
 }
-
-

@@ -31,14 +31,23 @@ export class LoginComponent {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe(
-        () => {
-          this.router.navigate(['/']);
+      this.authService.login(this.loginForm.value).subscribe({
+        next: (response: any) => {
+          this.authService.setToken(response.token)
+          this.router.navigate(['/'])
         },
-        (err) => {
-          console.error(err);
+        error: error => {
+          console.error(error);
         }
-      );
+      })
+    } else {
+      console.log("Campos no validos")
     }
   }
 }
+
+      
+      
+    
+
+

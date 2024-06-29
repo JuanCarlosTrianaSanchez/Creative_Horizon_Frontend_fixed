@@ -5,6 +5,7 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
 
 @Component({
   selector: 'app-products',
@@ -14,17 +15,15 @@ import { Product } from '../../models/product.model';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  private productService = inject(ProductService)
+  private productService = inject(ProductService);
+  private shoppingCartService = inject(ShoppingCartService);
 
   products = signal<Product[]>([]);
   filteredProducts = signal<Product[]>([]);
 
-  constructor() {}
-
   ngOnInit(): void {
     this.productService.getProducts().subscribe({
       next: (data: Product[]) => {
-        console.log(data);
         this.products.set(data);
         this.filteredProducts.set(data);
       },
@@ -33,6 +32,9 @@ export class ProductsComponent implements OnInit {
       }
     });
   }
+
+  addToCart(product: Product): void {
+    console.log('Adding product to cart:', product); 
+    this.shoppingCartService.addItem(product);
+  }
 }
-
-

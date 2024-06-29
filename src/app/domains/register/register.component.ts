@@ -1,4 +1,3 @@
-
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
@@ -47,15 +46,17 @@ export class RegisterComponent {
 
   onSubmit(): void {
     if (this.registerForm.valid) {
-      this.authService.register(this.registerForm.value).subscribe(
-        response => {
+      this.authService.register(this.registerForm.value).subscribe({
+        next: response => {
           console.log('Registro exitoso', response);
-          this.router.navigate(['/login']); 
+          this.router.navigate(['/login']);
         },
-        error => {
+        error: error => {
           console.error('Error en el registro', error);
         }
-      );
+      });
+    } else {
+      console.log("Campos no válidos");
     }
   }
 }

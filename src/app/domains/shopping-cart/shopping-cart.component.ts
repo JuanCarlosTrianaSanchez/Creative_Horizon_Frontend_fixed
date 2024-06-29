@@ -1,49 +1,47 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-shopping-cart',
-  standalone: true,
-  imports: [],
-  templateUrl: './shopping-cart.component.html',
-  styleUrl: './shopping-cart.component.css'
-})
-export class ShoppingCartComponent {
-
-}
-
-
-/* 
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { ShoppingCartService } from '../../services/shopping-cart.service'; // Asegúrate de crear este servicio si aún no existe
+import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule],
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-  private shoppingCartService = inject(ShoppingCartService);
-  cartItems = signal<CartItem[]>([]); // Suponiendo que tienes una interfaz CartItem
+  cartItems: { product: Product, quantity: number }[] = [];
+  total: number = 0;
+  isCartOpen: boolean = false;
+
+  constructor(private shoppingCartService: ShoppingCartService) {}
 
   ngOnInit(): void {
-    this.loadCartItems();
+    this.updateCart();
   }
 
-  loadCartItems() {
-    this.shoppingCartService.getCartItems().subscribe({
-      next: (items: CartItem[]) => {
-        this.cartItems.set(items);
-      },
-      error: (error) => {
-        console.error('Error loading cart items', error);
-      }
-    });
+  addToCart(product: Product): void {
+    this.shoppingCartService.addItem(product);
+    this.updateCart();
   }
 
-  // Métodos adicionales para manejar el carrito de compras
+  removeFromCart(productId: string): void {
+    this.shoppingCartService.removeItem(productId);
+    this.updateCart();
+  }
+
+  clearCart(): void {
+    this.shoppingCartService.clearCart();
+    this.updateCart();
+  }
+
+  toggleCart(): void {
+    this.isCartOpen = !this.isCartOpen;
+  }
+
+  private updateCart(): void {
+    this.cartItems = this.shoppingCartService.getItems();
+    this.total = this.shoppingCartService.getTotal();
+  }
 }
- */

@@ -1,4 +1,3 @@
-
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -7,11 +6,12 @@ import { FooterComponent } from '../footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent, RouterModule], 
+  imports: [CommonModule, HeaderComponent, FooterComponent, RouterModule],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
@@ -22,6 +22,7 @@ export class ProductDetailComponent implements OnInit {
   currentIndex: number = -1;
 
   private productService = inject(ProductService);
+  private shoppingCartService = inject(ShoppingCartService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
@@ -33,7 +34,6 @@ export class ProductDetailComponent implements OnInit {
   loadProducts() {
     this.productService.getProducts().subscribe((products: Product[]) => {
       this.products = products;
-      console.log(this.products); 
       this.setCurrentProduct();
     });
   }
@@ -64,6 +64,12 @@ export class ProductDetailComponent implements OnInit {
         this.productId = nextProductId;
         this.setCurrentProduct();
       });
+    }
+  }
+
+  addToCart(): void {
+    if (this.product) {
+      this.shoppingCartService.addItem(this.product);
     }
   }
 }

@@ -3,7 +3,7 @@
     class="navbar navbar-light navbar-expand-md justify-content-center fixed-top"
   >
     <div class="container-fluid">
-      <a class="navbar-brand d-flex w-50 mr-auto" [routerLink]="['/']">
+      <a class="navbar-brand d-flex w-50 mr-auto" routerLink="/">
         <strong>Creative Horizon</strong>
       </a>
       <div class="search-bar">
@@ -24,18 +24,18 @@
       <div class="navbar-collapse collapse w-100" id="mainNavBar">
         <ul class="navbar-nav w-100 justify-content-center">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/']">Inicio</a>
+            <a class="nav-link" routerLink="/">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/products']">Productos</a>
+            <a class="nav-link" routerLink="/products">Productos</a>
           </li>
         </ul>
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
           <li *ngIf="!isLoggedIn" class="nav-item">
-            <a class="nav-link" [routerLink]="['/register']">Registro</a>
+            <a class="nav-link" routerLink="/register">Registro</a>
           </li>
           <li *ngIf="!isLoggedIn" class="nav-item">
-            <a class="nav-link" [routerLink]="['/login']">Login</a>
+            <a class="nav-link" routerLink="/login">Login</a>
           </li>
           <li *ngIf="isLoggedIn" class="nav-item">
             <span class="nav-link">Bienvenido, {{ currentUser?.name }}!</span>
@@ -43,11 +43,35 @@
           <li *ngIf="isLoggedIn" class="nav-item">
             <a class="nav-link" href="#" (click)="logout()">Cerrar Sesión</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-bag"></i></a>
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link" href="#" (click)="openShoppingCart($event)">
+              <img
+                src="../../../assets/images/cart3.png"
+                alt="Carrito de compras"
+              />
+            </a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 </header>
+
+<div class="cart-sidebar" [class.open]="isCartOpen">
+  <div class="cart-sidebar-header">
+    <h2>Carrito de Compras</h2>
+    <button (click)="openShoppingCart($event)">Cerrar</button>
+  </div>
+  <div *ngIf="cartItems.length > 0; else emptyCart">
+    <div *ngFor="let item of cartItems" class="cart-item">
+      <p>{{ item.product.name }} - Cantidad: {{ item.quantity }}</p>
+      <p>Precio: {{ item.product.price | currency }}</p>
+      <button (click)="removeFromCart(item.product._id)">Eliminar</button>
+    </div>
+    <p class="total">Total: {{ total | currency }}</p>
+    <button class="clear-cart" (click)="clearCart()">Vaciar Carrito</button>
+  </div>
+  <ng-template #emptyCart>
+    <p>El carrito está vacío.</p>
+  </ng-template>
+</div>

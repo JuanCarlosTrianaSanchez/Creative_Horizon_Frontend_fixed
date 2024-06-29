@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap");
 .header-container .navbar {
   background-color: #3b372f !important;
 }
@@ -135,7 +134,11 @@
 }
 
 .header-container .nav-item {
-  margin: 0 1rem;
+  margin: 0 0.5rem;
+}
+
+.header-container .nav-item.ml-auto {
+  margin-right: 1rem;
 }
 
 .header-container .dropdown-menu {
@@ -159,4 +162,88 @@
 .header-container .dropdown-toggle:hover + .dropdown-menu,
 .header-container .dropdown-menu:hover {
   display: block;
+}
+
+.header-container .nav-link img {
+  width: 30px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100%;
+  background-color: #3b372f;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  color: #d4af37;
+  font-family: "Playfair Display", serif;
+}
+
+.cart-sidebar.open {
+  right: 0;
+}
+
+.cart-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #3b372f;
+  color: #d4af37;
+  font-size: 1.5rem;
+}
+
+.cart-sidebar .cart-item {
+  padding: 1rem;
+  border-bottom: 1px solid #d4af37;
+}
+
+.cart-sidebar .cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-sidebar .cart-item p {
+  margin: 0.5rem 0;
+  color: #f0f0f0;
+}
+
+.cart-sidebar .cart-item button {
+  background-color: #d4af37;
+  color: #3b372f;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cart-sidebar .cart-item button:hover {
+  background-color: #f0f0f0;
+  color: #3b372f;
+}
+
+.cart-sidebar .total {
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: right;
+  color: #d4af37;
+}
+
+.cart-sidebar .clear-cart {
+  background-color: #d4af37;
+  color: #3b372f;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cart-sidebar .clear-cart:hover {
+  background-color: #f0f0f0;
+  color: #3b372f;
 }
