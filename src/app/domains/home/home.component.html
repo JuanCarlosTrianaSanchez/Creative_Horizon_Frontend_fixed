@@ -3,11 +3,11 @@
   <section id="hero" class="d-flex align-items-center">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-8"></div>
+        <div class="col-12 hero-image"></div>
         <div
-          class="col-4 d-flex flex-column justify-content-center align-items-start"
+          class="col-12 d-flex flex-column justify-content-center align-items-center text-content"
         >
-          <h1>Creative Horizon <br />donde el arte y el lujo se unen</h1>
+          <h1>Creative Horizon <br />Donde el arte y el lujo se unen.</h1>
           <p>
             Explora un santuario de creatividad con nuestra exclusiva colección
             de materiales y herramientas de arte de primera calidad. En Creative
@@ -24,14 +24,11 @@
 
   <section id="initial-products" class="py-5">
     <div class="container-fluid">
-      <div class="row d-flex align-items-stretch">
-        <div
-          id="featured"
-          class="col-12 col-lg-3 text-center mb-4 d-flex flex-column"
-        >
+      <div class="row">
+        <div id="featured" class="col-12 col-lg-3 text-center mb-4">
           <h2>Productos Destacados</h2>
-          <div class="featured-products flex-grow-1">
-            <div class="product" *ngFor="let product of featuredProducts()">
+          <div class="featured-products">
+            <div class="product" *ngFor="let product of getFeaturedProducts()">
               <a [routerLink]="['/products', product._id]">
                 <figure>
                   <img [src]="product.imageUrl" alt="{{ product.name }}" />
@@ -50,9 +47,9 @@
 
         <div id="our-products" class="col-12 col-lg-9 d-flex flex-column">
           <h1 class="text-center mb-4">Nuestros Productos</h1>
-          <div class="row flex-grow-1">
+          <div class="row">
             <div
-              class="col-12 col-md-6 col-lg-4"
+              class="col-12 col-md-4 col-lg-4 mb-4"
               *ngFor="let product of initialProducts().slice(0, 9)"
             >
               <div class="product">
@@ -84,7 +81,7 @@
   <section id="services" class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-12 col-sm-4 col-md-4 text-center">
+        <div class="col-12 col-sm-4 text-center">
           <figure class="info">
             <a href="ruta_a_la_pagina_de_pinceles">
               <img
@@ -103,7 +100,7 @@
             </figcaption>
           </figure>
         </div>
-        <div class="col-12 col-sm-4 col-md-4 text-center">
+        <div class="col-12 col-sm-4 text-center">
           <figure class="info">
             <a href="ruta_a_la_pagina_de_pinturas">
               <img
@@ -122,7 +119,7 @@
             </figcaption>
           </figure>
         </div>
-        <div class="col-12 col-sm-4 col-md-4 text-center">
+        <div class="col-12 col-sm-4 text-center">
           <figure class="info">
             <a href="ruta_a_la_pagina_de_lienzos">
               <img

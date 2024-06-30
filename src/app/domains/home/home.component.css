@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap");
 main {
   background: -webkit-linear-gradient(90deg, #d4a84f, #4d3825, #17120c);
   background: linear-gradient(90deg, #d4a84f, #4d3825, #17120c);
@@ -25,34 +26,67 @@ main {
 }
 
 #hero {
-  max-width: 100%;
+  width: 100%;
   padding-top: 70px;
   position: relative;
 }
 
-.row {
-  max-width: 100%;
-}
-
-.col-8 {
+.hero-image {
   width: 100%;
   height: 600px;
   background-image: url("../../../assets/images/FondoArte-1.webp");
   background-size: cover;
   background-position: center;
+  position: relative;
+  border: 2px solid #cba705ec;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.col-4 {
-  width: 100%;
-  font-family: "Playfair Display", serif;
-  color: #f7f6f3;
-  font-size: 2rem;
-  font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(7, 7, 7, 0.944);
+.text-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #f1eaea;
+  text-align: center;
   padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  font-family: "Playfair Display", serif;
 }
 
-#initial-products .product {
+#hero h1 {
+  font-size: 4rem;
+  color: #d4a84f;
+}
+
+#hero p {
+  font-size: 1.9rem;
+  margin-top: 20px;
+  color: #f1eaea;
+  font-family: "Roboto", sans-serif;
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.col-lg-3 {
+  flex: 0 0 25%;
+  margin: 0;
+  padding: 0;
+}
+
+.col-lg-9 {
+  flex: 0 0 75%;
+  margin: 0;
+  padding: 0;
+}
+
+#initial-products .product,
+#featured .product {
   max-width: 100%;
   height: auto;
   position: relative;
@@ -65,13 +99,14 @@ main {
   transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
 }
 
-#initial-products .product:hover {
+#initial-products .product:hover,
+#featured .product:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 24px rgba(17, 10, 229, 0.977);
   background-color: black;
 }
 
-#initial-products .product figure {
+.product figure {
   margin: 0;
   padding: 0;
   display: flex;
@@ -83,7 +118,7 @@ main {
   border-radius: 15px;
 }
 
-#initial-products .product figure img {
+.product figure img {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -92,18 +127,18 @@ main {
   border-radius: 15px;
 }
 
-#initial-products .product:hover figure img {
-  transform: scale(1);
+.product:hover figure img {
+  transform: scale(1.05);
   border: 2px solid #f4f3f1ec;
   border-radius: 15px;
 }
 
-#initial-products .product figcaption {
+.product figcaption {
   text-align: center;
   margin-top: 1rem;
 }
 
-#initial-products .product figcaption h3 {
+.product figcaption h3 {
   font-size: 1.9rem;
   color: #e0e0e0;
   margin: 0.5rem 0;
@@ -111,7 +146,7 @@ main {
   transition: color 0.3s;
 }
 
-#initial-products .product figcaption p {
+.product figcaption p {
   color: #0dda29;
   font-size: 1rem;
   margin: 0;
@@ -119,7 +154,7 @@ main {
   transition: color 0.3s;
 }
 
-#initial-products .product .featured {
+.product .featured {
   font-size: 1.9rem;
   color: rgb(155, 129, 43);
   background: rgba(26, 25, 1, 0.694);
@@ -130,7 +165,7 @@ main {
   transition: background-color 0.3s, color 0.3s;
 }
 
-#initial-products .product .product-price {
+.product .product-price {
   color: #aaa;
   font-size: 1.3rem;
   font-weight: bold;
@@ -138,28 +173,21 @@ main {
   transition: color 0.3s;
 }
 
-#initial-products .product:hover figcaption h3 {
+.product:hover figcaption h3 {
   color: #ff6347;
 }
 
-#initial-products .product:hover figcaption p {
+.product:hover figcaption p {
   color: #f3f705;
 }
 
-#initial-products .product:hover .product-price {
+.product:hover .product-price {
   color: #ffd700;
 }
 
-#initial-products .product:hover .featured {
+.product:hover .featured {
   background-color: #fff;
   color: #000;
-}
-
-.destacado {
-  background-color: rgba(5, 5, 5, 0.1);
-  padding: 1rem;
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(252, 249, 249, 0.2);
 }
 
 #featured {
@@ -168,109 +196,6 @@ main {
   background-color: rgb(7, 7, 7);
   border: 2px solid #f3f3f0;
   border-radius: 20px;
-}
-
-#featured .product {
-  max-width: 100%;
-  height: auto;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  border: 1px solid #888585;
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(238, 204, 12, 0.678);
-  background-color: #302b1d;
-  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
-}
-
-#featured .product:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgb(247, 246, 244);
-  background-color: #070707;
-}
-
-#featured .product figure {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  overflow: hidden;
-  border-radius: 15px;
-}
-
-#featured .product figure img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  transition: transform 0.3s, border 0.3s;
-  border: 2px solid #aca7a7;
-  border-radius: 15px;
-}
-
-#featured .product:hover figure img {
-  transform: scale(1);
-  border: 2px solid #ffd700;
-}
-
-#featured .product figcaption {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-#featured .product figcaption h3 {
-  font-size: 1.9rem;
-  color: #e0e0e0;
-  margin: 0.5rem 0;
-  font-family: "Playfair Display", serif;
-  transition: color 0.3s;
-}
-
-#featured .product figcaption p {
-  color: #f1e209;
-  font-size: 1.1rem;
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  transition: color 0.3s;
-}
-
-#featured .product .featured {
-  font-size: 1.9rem;
-  color: rgb(252, 251, 251);
-  background: rgba(10, 10, 10, 0.966);
-  font-weight: 600;
-  padding: 0.2rem 0.4rem;
-  border-radius: 5px;
-  border: 3px solid #030303;
-  margin-bottom: 0.5rem;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-#featured .product .product-price {
-  color: #e7eb0b;
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-top: 0.5rem;
-  transition: color 0.3s;
-}
-
-#featured .product:hover figcaption h3 {
-  color: #faf9f7;
-}
-
-#featured .product:hover figcaption p {
-  color: #4cd30e;
-}
-
-#featured .product:hover .product-price {
-  color: #ff6347;
-}
-
-#featured .product:hover .featured {
-  background-color: #fff;
-  color: #000;
 }
 
 a:hover {

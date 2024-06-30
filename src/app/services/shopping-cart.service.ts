@@ -1,14 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  private items: { product: Product, quantity: number }[] = [];
+  private items: { product: Product, quantity: number }[] = this.loadCartItems();
+  private isCartOpenSubject = new BehaviorSubject<boolean>(false); 
+
+  isCartOpen$ = this.isCartOpenSubject.asObservable(); 
 
   constructor() {
-    this.loadCart();
+    this.saveCartItems(); // Save initial state
+  }
+
+  private loadCartItems(): { product: Product, quantity: number }[] {
+    const storedItems = localStorage.getItem('cartItems');
+    return storedItems ? JSON.parse(storedItems) : [];
+  }
+
+  private saveCartItems(): void {
+    localStorage.setItem('cartItems', JSON.stringify(this.items));
   }
 
   addItem(product: Product, quantity: number = 1): void {
@@ -18,12 +31,12 @@ export class ShoppingCartService {
     } else {
       this.items.push({ product, quantity });
     }
-    this.saveCart();
+    this.saveCartItems();
   }
 
   removeItem(productId: string): void {
     this.items = this.items.filter(item => item.product._id !== productId);
-    this.saveCart();
+    this.saveCartItems();
   }
 
   getItems(): { product: Product, quantity: number }[] {
@@ -32,21 +45,23 @@ export class ShoppingCartService {
 
   clearCart(): void {
     this.items = [];
-    this.saveCart();
+    this.saveCartItems();
   }
 
   getTotal(): number {
     return this.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
   }
 
-  private saveCart(): void {
-    localStorage.setItem('shoppingCart', JSON.stringify(this.items));
+  toggleCart(): void {
+    this.isCartOpenSubject.next(!this.isCartOpenSubject.getValue());
   }
 
-  private loadCart(): void {
-    const storedCart = localStorage.getItem('shoppingCart');
-    if (storedCart) {
-      this.items = JSON.parse(storedCart);
+  updateItemQuantity(productId: string, quantity: number): void {
+    const item = this.items.find(item => item.product._id === productId);
+    if (item) {
+      item.quantity = quantity;
     }
+    this.saveCartItems();
   }
 }
+
