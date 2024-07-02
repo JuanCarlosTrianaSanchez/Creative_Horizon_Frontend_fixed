@@ -58,10 +58,10 @@ export class AuthService {
       }).join(''));
 
       const user = JSON.parse(jsonPayload);
-      console.log('User data from token:', user);
+      console.log('User data from token:', user); 
 
-      // Return user object with _id (if it exists)
-      return { _id: user.id || user._id, ...user };
+      // Return user object with _id
+      return { _id: user.id, ...user };
     } catch (error) {
       console.error('Error decoding token', error);
       return null;
