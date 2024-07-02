@@ -1,1 +1,74 @@
-<p>checkout works!</p>
+<app-header></app-header>
+<div class="checkout-container">
+  <div class="columns">
+    <div class="billing-details">
+      <h2>Detalles de Facturación</h2>
+      <div>
+        <p><strong>Nombre:</strong> {{ user()?.name }}</p>
+        <p><strong>Apellidos:</strong> {{ user()?.lastname }}</p>
+        <p><strong>Dirección:</strong> {{ user()?.direccion }}</p>
+        <p><strong>Barrio:</strong> {{ user()?.barrio }}</p>
+        <p><strong>Ciudad:</strong> {{ user()?.ciudad }}</p>
+        <p><strong>País:</strong> {{ user()?.pais }}</p>
+        <p><strong>Teléfono:</strong> {{ user()?.phone }}</p>
+      </div>
+    </div>
+    <div class="order-summary">
+      <h2>Tu Pedido</h2>
+      <div *ngFor="let product of products()" class="product-item">
+        <p>{{ product.name }} × {{ product.quantity }}</p>
+        <p>{{ product.priceAtPurchase | currency }}</p>
+      </div>
+      <div class="order-total">
+        <p>Subtotal: {{ total | currency }}</p>
+        <p>Envío: Envío gratuito</p>
+        <h3>Total: {{ total | currency }}</h3>
+      </div>
+
+      <h2>Método de Pago</h2>
+      <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+        <div class="payment-method">
+          <label>
+            <input
+              type="radio"
+              formControlName="paymentMethod"
+              value="tarjeta_de_credito"
+              (change)="selectPaymentMethod('tarjeta_de_credito')"
+            />
+            Tarjeta de Crédito
+          </label>
+          <label>
+            <input
+              type="radio"
+              formControlName="paymentMethod"
+              value="tarjeta_debito"
+              (change)="selectPaymentMethod('tarjeta_debito')"
+            />
+            Tarjeta de Débito
+          </label>
+          <label>
+            <input
+              type="radio"
+              formControlName="paymentMethod"
+              value="neki"
+              (change)="selectPaymentMethod('neki')"
+            />
+            Neki
+          </label>
+          <label>
+            <input
+              type="radio"
+              formControlName="paymentMethod"
+              value="daviplata"
+              (change)="selectPaymentMethod('daviplata')"
+            />
+            Daviplata
+          </label>
+        </div>
+
+        <button type="submit" [disabled]="isSubmitting">Realizar Compra</button>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

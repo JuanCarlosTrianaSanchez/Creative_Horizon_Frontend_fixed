@@ -1,4 +1,4 @@
-import { Product } from './product.model'; // Asegúrate de importar el modelo de producto
+import { Product } from './product.model';
 
 export interface Purchase {
   userId: string;

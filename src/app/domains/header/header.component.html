@@ -111,7 +111,7 @@
         {{ total() | currency : "USD" : "symbol" : "1.0-0" }}
       </p>
     </div>
-    <button class="checkout-btn">Checkout</button>
+    <button class="checkout-btn" [routerLink]="['/checkout']">Checkout</button>
   </div>
   <ng-template #emptyCart>
     <p>El carrito está vacío.</p>

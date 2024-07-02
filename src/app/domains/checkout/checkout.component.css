@@ -1,0 +1,90 @@
+.checkout-container {
+  display: flex;
+  justify-content: center;
+  padding: 120px;
+  max-width: 1200px;
+  margin: 80px auto 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.columns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.billing-details,
+.order-summary {
+  width: 48%;
+}
+
+.billing-details h2,
+.order-summary h2 {
+  margin-bottom: 20px;
+}
+
+.billing-details label,
+.order-summary label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.billing-details input,
+.order-summary input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.order-summary .product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.order-summary .product-details p {
+  margin: 0;
+}
+
+.order-summary .order-total {
+  margin-top: 20px;
+}
+
+.order-summary .payment-methods label {
+  display: block;
+  margin-top: 10px;
+}
+
+.order-summary button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.order-summary button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  color: green;
+  margin-bottom: 10px;
+}

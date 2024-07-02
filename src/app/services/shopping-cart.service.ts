@@ -45,7 +45,7 @@ export class ShoppingCartService {
   }
 
   clearCart(): void {
-    this.itemsSignal.set([]); // Limpiar el carrito
+    this.itemsSignal.set([]); 
   }
 
   toggleCart(): void {
@@ -58,6 +58,6 @@ export class ShoppingCartService {
     if (item) {
       item.quantity = quantity;
     }
-    this.itemsSignal.set([...items]); 
+    this.itemsSignal.set([...items]);
   }
 }

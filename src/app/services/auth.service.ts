@@ -58,7 +58,8 @@ export class AuthService {
       }).join(''));
 
       const user = JSON.parse(jsonPayload);
-      console.log(user);  
+      console.log('User data from token:', user); 
+
       return user;
     } catch (error) {
       console.error('Error decoding token', error);
