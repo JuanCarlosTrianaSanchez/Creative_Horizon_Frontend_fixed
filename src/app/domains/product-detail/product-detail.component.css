@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap");
+
 main {
   background-image: url(../../../assets/images/Fondo-repeat.webp);
 }
@@ -107,16 +109,32 @@ main {
 }
 
 .btn-secondary {
-  background-color: #6c757d;
+  background-color: #7a6019;
   color: white;
-  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  padding: 0.75rem 0.5rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   z-index: 10;
   pointer-events: auto;
+  font-size: 0.7rem;
 }
 
 .btn-secondary:hover {
   background-color: #5a6268;
+}
+
+.btn-previous {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+}
+
+.btn-next {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
 }

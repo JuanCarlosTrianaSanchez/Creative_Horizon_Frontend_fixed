@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
-import { BehaviorSubject } from 'rxjs';
+import { signal, effect, computed } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  private items: { product: Product, quantity: number }[] = this.loadCartItems();
-  private isCartOpenSubject = new BehaviorSubject<boolean>(false); 
+  private itemsSignal = signal<{ product: Product, quantity: number }[]>(this.loadCartItems());
+  private isCartOpenSignal = signal<boolean>(false);
 
-  isCartOpen$ = this.isCartOpenSubject.asObservable(); 
+  items = () => this.itemsSignal();
+
+  isCartOpen = () => this.isCartOpenSignal();
+
+  total = () => this.itemsSignal().reduce((total, item) => total + item.product.price * item.quantity, 0);
 
   constructor() {
-    this.saveCartItems(); // Save initial state
+    effect(() => this.saveCartItems(this.itemsSignal()));
   }
 
   private loadCartItems(): { product: Product, quantity: number }[] {
@@ -20,48 +24,40 @@ export class ShoppingCartService {
     return storedItems ? JSON.parse(storedItems) : [];
   }
 
-  private saveCartItems(): void {
-    localStorage.setItem('cartItems', JSON.stringify(this.items));
+  private saveCartItems(items: { product: Product, quantity: number }[]): void {
+    localStorage.setItem('cartItems', JSON.stringify(items));
   }
 
   addItem(product: Product, quantity: number = 1): void {
-    const existingItem = this.items.find(item => item.product._id === product._id);
+    const items = this.itemsSignal();
+    const existingItem = items.find(item => item.product._id === product._id);
     if (existingItem) {
       existingItem.quantity += quantity;
     } else {
-      this.items.push({ product, quantity });
+      items.push({ product, quantity });
     }
-    this.saveCartItems();
+    this.itemsSignal.set([...items]); 
   }
 
   removeItem(productId: string): void {
-    this.items = this.items.filter(item => item.product._id !== productId);
-    this.saveCartItems();
-  }
-
-  getItems(): { product: Product, quantity: number }[] {
-    return this.items;
+    const items = this.itemsSignal().filter(item => item.product._id !== productId);
+    this.itemsSignal.set([...items]); 
   }
 
   clearCart(): void {
-    this.items = [];
-    this.saveCartItems();
-  }
-
-  getTotal(): number {
-    return this.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
+    this.itemsSignal.set([]); // Limpiar el carrito
   }
 
   toggleCart(): void {
-    this.isCartOpenSubject.next(!this.isCartOpenSubject.getValue());
+    this.isCartOpenSignal.set(!this.isCartOpenSignal());
   }
 
   updateItemQuantity(productId: string, quantity: number): void {
-    const item = this.items.find(item => item.product._id === productId);
+    const items = this.itemsSignal();
+    const item = items.find(item => item.product._id === productId);
     if (item) {
       item.quantity = quantity;
     }
-    this.saveCartItems();
+    this.itemsSignal.set([...items]); 
   }
 }
-

@@ -44,7 +44,7 @@
             <a class="nav-link" href="#" (click)="logout()">Cerrar Sesión</a>
           </li>
           <li class="nav-item" *ngIf="isLoggedIn">
-            <a class="nav-link" href="#" (click)="openShoppingCart($event)">
+            <a class="nav-link" href="#" (click)="toggleShoppingCart($event)">
               <img
                 src="../../../assets/images/cart3.png"
                 alt="Carrito de compras"
@@ -57,19 +57,21 @@
   </nav>
 </header>
 
-<div class="cart-sidebar" [class.open]="isCartOpen">
+<div class="cart-sidebar" [class.open]="isCartOpen()">
   <div class="cart-sidebar-header">
     <h2>Carrito de Compras</h2>
-    <button class="close-btn" (click)="openShoppingCart($event)">Cerrar</button>
+    <button class="close-btn" (click)="toggleShoppingCart($event)">
+      Cerrar
+    </button>
   </div>
-  <div *ngIf="cartItems.length > 0; else emptyCart">
+  <div *ngIf="cartItems().length > 0; else emptyCart">
     <div class="cart-items-header">
-      <span>{{ cartItems.length }} Items</span>
+      <span>{{ cartItems().length }} Items</span>
       <button class="clear-cart-btn" (click)="clearCart()">
         Vaciar Carrito
       </button>
     </div>
-    <div *ngFor="let item of cartItems" class="cart-item">
+    <div *ngFor="let item of cartItems()" class="cart-item">
       <img
         [src]="item.product.imageUrl"
         alt="{{ item.product.name }}"
@@ -105,7 +107,8 @@
     </div>
     <div class="cart-summary">
       <p class="subtotal">
-        Subtotal: {{ total | currency : "USD" : "symbol" : "1.0-0" }}
+        Total de tu compra:
+        {{ total() | currency : "USD" : "symbol" : "1.0-0" }}
       </p>
     </div>
     <button class="checkout-btn">Checkout</button>

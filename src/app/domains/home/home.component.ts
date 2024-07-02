@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
 import { signal } from '@angular/core';
@@ -16,13 +16,14 @@ import { signal } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   private productService = inject(ProductService);
+  private router = inject(Router);
 
   initialProducts = signal<Product[]>([]);
   featuredProducts = signal<Product[]>([]);
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((products: Product[]) => {
-      this.initialProducts.set(products.slice(0, 12));
+      this.initialProducts.set(products.slice(0, 9));
       const featured = products.filter(product => product.featured);
       this.featuredProducts.set(featured.slice(0, 3));
     });
@@ -34,5 +35,9 @@ export class HomeComponent implements OnInit {
 
   getFeaturedProducts(): Product[] {
     return this.featuredProducts();
+  }
+
+  navigateToProduct(productId: string): void {
+    this.router.navigate(['/products', productId]);
   }
 }

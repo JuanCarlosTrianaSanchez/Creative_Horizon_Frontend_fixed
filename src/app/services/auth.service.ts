@@ -57,7 +57,9 @@ export class AuthService {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
       }).join(''));
 
-      return JSON.parse(jsonPayload);
+      const user = JSON.parse(jsonPayload);
+      console.log(user);  
+      return user;
     } catch (error) {
       console.error('Error decoding token', error);
       return null;

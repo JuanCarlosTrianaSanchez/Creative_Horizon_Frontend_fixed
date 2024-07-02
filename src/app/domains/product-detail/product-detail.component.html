@@ -13,6 +13,20 @@
               "
               [alt]="product?.name || 'Product Image'"
             />
+            <button
+              class="btn btn-secondary btn-previous"
+              (click)="goToPrevious()"
+              [disabled]="currentIndex <= 0"
+            >
+              Anterior
+            </button>
+            <button
+              class="btn btn-secondary btn-next"
+              (click)="goToNext()"
+              [disabled]="currentIndex >= products.length - 1"
+            >
+              Siguiente
+            </button>
           </div>
         </div>
 
@@ -34,27 +48,6 @@
           </p>
           <button class="btn btn-primary" (click)="addToCart()">
             Agregar al carrito
-          </button>
-        </div>
-      </div>
-
-      <div class="row mt-4">
-        <div class="col-6 text-left">
-          <button
-            class="btn btn-secondary"
-            (click)="goToPrevious()"
-            [disabled]="currentIndex <= 0"
-          >
-            Anterior
-          </button>
-        </div>
-        <div class="col-6 text-right">
-          <button
-            class="btn btn-secondary"
-            (click)="goToNext()"
-            [disabled]="currentIndex >= products.length - 1"
-          >
-            Siguiente
           </button>
         </div>
       </div>

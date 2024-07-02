@@ -22,13 +22,38 @@
     </div>
   </section>
 
-  <section id="initial-products" class="py-5">
-    <div class="container-fluid">
+  <main>
+    <div class="container">
       <div class="row">
-        <div id="featured" class="col-12 col-lg-3 text-center mb-4">
+        <div class="col-left">
           <h2>Productos Destacados</h2>
           <div class="featured-products">
-            <div class="product" *ngFor="let product of getFeaturedProducts()">
+            <div
+              class="product"
+              *ngFor="let product of getFeaturedProducts()"
+              (click)="navigateToProduct(product._id)"
+            >
+              <figure>
+                <img [src]="product.imageUrl" alt="{{ product.name }}" />
+                <figcaption>
+                  <span class="featured">{{ product.category.type }}</span>
+                  <h3>{{ product.name }}</h3>
+                  <p class="product-price">
+                    {{ product.price | currency : "" : "symbol" : "1.0-0" }}
+                  </p>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="col-spacer"></div>
+        <div class="col-right">
+          <h1 class="text-center mb-4">Nuestros Productos</h1>
+          <div class="products-grid">
+            <div
+              class="product"
+              *ngFor="let product of getInitialProducts().slice(0, 9)"
+            >
               <a [routerLink]="['/products', product._id]">
                 <figure>
                   <img [src]="product.imageUrl" alt="{{ product.name }}" />
@@ -44,44 +69,14 @@
             </div>
           </div>
         </div>
-
-        <div id="our-products" class="col-12 col-lg-9 d-flex flex-column">
-          <h1 class="text-center mb-4">Nuestros Productos</h1>
-          <div class="row">
-            <div
-              class="col-12 col-md-4 col-lg-4 mb-4"
-              *ngFor="let product of initialProducts().slice(0, 9)"
-            >
-              <div class="product">
-                <a [routerLink]="['/products', product._id]">
-                  <figure>
-                    <img [src]="product.imageUrl" alt="{{ product.name }}" />
-                    <figcaption>
-                      <span class="featured">{{ product.category.type }}</span>
-                      <h3>{{ product.name }}</h3>
-                      <p class="product-price">
-                        {{ product.price | currency : "" : "symbol" : "1.0-0" }}
-                      </p>
-                    </figcaption>
-                  </figure>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="text-center mt-4">
-            <a class="btn btn-primary" [routerLink]="'/products'"
-              >Ver Todos los Productos</a
-            >
-          </div>
-        </div>
       </div>
     </div>
-  </section>
+  </main>
 
   <section id="services" class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-12 col-sm-4 text-center">
+        <div class="col-4 text-center">
           <figure class="info">
             <a href="ruta_a_la_pagina_de_pinceles">
               <img
@@ -100,7 +95,7 @@
             </figcaption>
           </figure>
         </div>
-        <div class="col-12 col-sm-4 text-center">
+        <div class="col-4 text-center">
           <figure class="info">
             <a href="ruta_a_la_pagina_de_pinturas">
               <img
@@ -119,7 +114,7 @@
             </figcaption>
           </figure>
         </div>
-        <div class="col-12 col-sm-4 text-center">
+        <div class="col-4 text-center">
           <figure class="info">
             <a href="ruta_a_la_pagina_de_lienzos">
               <img

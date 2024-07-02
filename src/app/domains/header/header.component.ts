@@ -21,7 +21,9 @@ export class HeaderComponent {
   private authService = inject(AuthService);
   private shoppingCartService = inject(ShoppingCartService);
 
-  isCartOpen: boolean = false;
+  isCartOpen = this.shoppingCartService.isCartOpen;
+  cartItems = this.shoppingCartService.items;
+  total = this.shoppingCartService.total;
 
   constructor() {}
 
@@ -33,21 +35,13 @@ export class HeaderComponent {
     return this.authService.getCurrentUser();
   }
 
-  get cartItems(): CartItem[] {
-    return this.shoppingCartService.getItems();
-  }
-
-  get total() {
-    return this.shoppingCartService.getTotal(); 
-  }
-
   logout() {
     this.authService.logout();
   }
 
-  openShoppingCart(event: MouseEvent) {
-    event.preventDefault(); 
-    this.isCartOpen = !this.isCartOpen; 
+  toggleShoppingCart(event: MouseEvent) {
+    event.preventDefault();
+    this.shoppingCartService.toggleCart();
   }
 
   removeFromCart(productId: string): void {
