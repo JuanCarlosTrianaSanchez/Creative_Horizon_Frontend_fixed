@@ -47,6 +47,7 @@
           </div>
         </div>
         <div class="col-spacer"></div>
+
         <div class="col-right">
           <h1 class="text-center mb-4">Nuestros Productos</h1>
           <div class="products-grid">
@@ -57,6 +58,7 @@
               <a [routerLink]="['/products', product._id]">
                 <figure>
                   <img [src]="product.imageUrl" alt="{{ product.name }}" />
+
                   <figcaption>
                     <span class="featured">{{ product.category.type }}</span>
                     <h3>{{ product.name }}</h3>
