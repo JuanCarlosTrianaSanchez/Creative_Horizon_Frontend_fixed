@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class AuthService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'http://18.116.46.224:3000/api';
 
   setToken(token: string) {
     localStorage.setItem("user_token", token);
