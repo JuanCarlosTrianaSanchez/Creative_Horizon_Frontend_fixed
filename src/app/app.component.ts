@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './counter.reducer';
 
 @Component({
   selector: 'app-root',

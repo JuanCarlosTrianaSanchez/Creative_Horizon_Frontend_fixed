@@ -43,6 +43,16 @@
             <button (click)="addToCart(product)" class="add-to-cart mt-2">
               Añadir al Carrito
             </button>
+            <button
+              (click)="toggleFavorite(product)"
+              class="add-to-favorites mt-2"
+            >
+              {{
+                isFavorite(product._id)
+                  ? "Quitar de Favoritos"
+                  : "Añadir a Favoritos"
+              }}
+            </button>
           </div>
         </div>
       </div>
