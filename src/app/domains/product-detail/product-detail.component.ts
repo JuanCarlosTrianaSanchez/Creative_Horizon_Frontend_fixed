@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { FavoritesService } from '../../services/favorites.service'; 
+import { AuthService } from '../../services/auth.service'; 
 
 @Component({
   selector: 'app-product-detail',
@@ -20,9 +22,12 @@ export class ProductDetailComponent implements OnInit {
   product: Product | null = null;
   products: Product[] = [];
   currentIndex: number = -1;
+  isFavorite: boolean = false;  
 
   private productService = inject(ProductService);
   private shoppingCartService = inject(ShoppingCartService);
+  private favoritesService = inject(FavoritesService);  
+  private authService = inject(AuthService); 
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
@@ -43,6 +48,32 @@ export class ProductDetailComponent implements OnInit {
       this.currentIndex = this.products.findIndex(product => product._id === this.productId);
       if (this.currentIndex !== -1) {
         this.product = this.products[this.currentIndex];
+        this.checkIfFavorite();  
+      }
+    }
+  }
+
+  checkIfFavorite(): void {
+    const user = this.authService.getCurrentUser(); 
+    if (this.product && user) {
+      this.favoritesService.isFavorite(user._id, this.product._id).subscribe(isFav => {
+        this.isFavorite = isFav;
+      });
+    }
+  }
+  
+
+  toggleFavorite(): void {
+    const user = this.authService.getCurrentUser(); 
+    if (this.product && user) {
+      if (this.isFavorite) {
+        this.favoritesService.removeFavorite(user._id, this.product._id).subscribe(() => {
+          this.isFavorite = false;
+        });
+      } else {
+        this.favoritesService.addFavorite(user._id, this.product._id).subscribe(() => {
+          this.isFavorite = true;
+        });
       }
     }
   }
