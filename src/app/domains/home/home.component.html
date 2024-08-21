@@ -36,7 +36,7 @@
               <figure>
                 <img [src]="product.imageUrl" alt="{{ product.name }}" />
                 <figcaption>
-                  <span class="featured">{{ product.category?.type }}</span>
+                  <span class="featured">{{ product.category.type }}</span>
                   <h3>{{ product.name }}</h3>
                   <p class="product-price">
                     {{ product.price | currency : "" : "symbol" : "1.0-0" }}
@@ -60,7 +60,7 @@
                   <img [src]="product.imageUrl" alt="{{ product.name }}" />
 
                   <figcaption>
-                    <span class="featured">{{ product.category?.type }}</span>
+                    <span class="featured">{{ product.category.type }}</span>
                     <h3>{{ product.name }}</h3>
                     <p class="product-price">
                       {{ product.price | currency : "" : "symbol" : "1.0-0" }}
